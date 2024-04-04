@@ -24,3 +24,32 @@ This flask server responds with the required json at the webfinger endpoint and 
 
 I just added a entry to my reverse proxy in order to have proper certificates.
 If you don't have a reverse proxy setup already, something like [Caddy](https://github.com/caddyserver/caddy) or nginx would be my go to solution.
+
+# Usage
+Clone repo
+```bash
+git clone https://github.com/chrellrich/tailscale-webfinger-spoofer.git
+cd tailscale-webfinger-spoofer
+```
+Install requirements
+```bash
+$ pip install -r requirements.txt
+```
+Run webserver
+```bash
+$ python webfinger.py --email user@example.com --issuer-url https://example.com/auth
+```
+If you are unsure what options you can use just run it with `-h`
+```bash
+$ python webfinger.py -h
+usage: webfinger.py [-h] --email EMAIL --issuer-url ISSUER_URL [--port PORT] [--host HOST]
+
+Flask WebFinger Server
+
+options:
+  -h, --help            show this help message and exit
+  --email EMAIL         Email address
+  --issuer-url ISSUER_URL
+                        Issuer URL
+  --port PORT           Port number (default: 5000)
+  --host HOST           Host address (default: 0.0.0.0)```
